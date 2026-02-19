@@ -1,0 +1,20 @@
+
+---
+import { Send } from 'lucide-react';
+---
+
+<section id="contact" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12">Contact Us</h2>
+    <form class="max-w-xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <input type="text" placeholder="Your Name" class="bg-white p-4 rounded-lg w-full shadow-lg">
+        <input type="email" placeholder="Your Email" class="bg-white p-4 rounded-lg w-full shadow-lg">
+      </div>
+      <textarea placeholder="Your Message" class="bg-white p-4 rounded-lg w-full mb-4 shadow-lg" rows="6"></textarea>
+      <button type="submit" class="bg-accent-purple text-white font-bold py-3 px-8 rounded-full hover:bg-accent-purple/80 transition-colors flex items-center justify-center mx-auto w-fit">
+        Send Message <Send className="ml-2" />
+      </button>
+    </form>
+  </div>
+</section>

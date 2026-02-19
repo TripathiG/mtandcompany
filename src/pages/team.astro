@@ -1,0 +1,23 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import TeamMember from '../components/TeamMember.astro';
+---
+
+<Layout title="Meet Our Team | M&T Company">
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Meet Our Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <TeamMember name="John Doe" role="CEO" bio="John is the visionary leader of our company, with a passion for innovation and a drive to create amazing things." />
+        <TeamMember name="Jane Smith" role="Lead Designer" bio="Jane is the creative force behind our designs, with a keen eye for detail and a love for beautiful aesthetics." />
+        <TeamMember name="Peter Jones" role="Lead Developer" bio="Peter is the technical wizard who brings our ideas to life, with a deep understanding of code and a commitment to quality." />
+        <TeamMember name="Mary Williams" role="Project Manager" bio="Mary keeps our projects on track, ensuring that we deliver on time and on budget, every time." />
+        <TeamMember name="David Brown" role="Marketing Specialist" bio="David is our marketing guru, with a knack for storytelling and a passion for connecting with our audience." />
+        <TeamMember name="Susan Garcia" role="Content Strategist" bio="Susan creates compelling content that engages and informs, helping us to build a strong online presence." />
+        <TeamMember name="Michael Miller" role="SEO Expert" bio="Michael helps us to get noticed by search engines, driving traffic and leads to our website." />
+        <TeamMember name="Sarah Wilson" role="Social Media Manager" bio="Sarah is the voice of our brand on social media, building relationships and fostering a sense of community." />
+      </div>
+    </div>
+  </section>
+</Layout>

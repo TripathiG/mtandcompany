@@ -1,53 +1,50 @@
-# To learn more about how to use Nix to configure your environment
-# see: https://developers.google.com/idx/guides/customize-idx-env
+
 { pkgs, ... }: {
-  # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
-  # Use https://search.nixos.org/packages to find packages
+  # Use the unstable channel to get the latest versions of packages
+  channel = "unstable";
+
+  # A list of packages to have available in your environment
   packages = [
-    # pkgs.go
-    # pkgs.python311
-    # pkgs.python311Packages.pip
-    # pkgs.nodejs_20
-    # pkgs.nodePackages.nodemon
+    pkgs.nodejs_20  # Specify Node.js version 20
   ];
-  # Sets environment variables in the workspace
-  env = {};
+
+  # IDX-specific configuration
   idx = {
-    # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
+    # A list of VS Code extensions to install
     extensions = [
-      # "vscodevim.vim"
-      "google.gemini-cli-vscode-ide-companion"
+      "astro-build.astro-vscode"
+      "bradlc.vscode-tailwindcss"
     ];
-    # Enable previews
-    previews = {
-      enable = true;
-      previews = {
-        # web = {
-        #   # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
-        #   # and show it in IDX's web preview panel
-        #   command = ["npm" "run" "dev"];
-        #   manager = "web";
-        #   env = {
-        #     # Environment variables to set for your server
-        #     PORT = "$PORT";
-        #   };
-        # };
-      };
-    };
+
     # Workspace lifecycle hooks
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
-        # Example: install JS dependencies from NPM
-        # npm-install = "npm install";
-        # Open editors for the following files by default, if they exist:
-        default.openFiles = [ ".idx/dev.nix" "README.md" ];
+        # Move the Astro project files to the root of the workspace
+        move-astro-files = "mv popular-photon/* . && mv popular-photon/.* . 2>/dev/null || true";
+        # Remove the now-empty directory
+        remove-astro-dir = "rmdir popular-photon";
+        # Install project dependencies
+        npm-install = "npm install";
       };
-      # Runs when the workspace is (re)started
+      # Runs every time the workspace is (re)started
       onStart = {
-        # Example: start a background task to watch and re-build backend code
-        # watch-backend = "npm run watch-backend";
+        # Start the Astro development server
+        start-dev-server = "npm run dev";
+      };
+    };
+
+    # Configure a web preview for your application
+    previews = {
+      enable = true;
+      previews = {
+        # Name of the preview
+        web = {
+          # Command to start the web server
+          command = ["npm" "run" "dev" "--" "--port" "$PORT" "--host" "0.0.0.0"];
+          # Use the "web" manager for this preview
+          manager = "web";
+        };
       };
     };
   };
