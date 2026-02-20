@@ -1,9 +1,14 @@
 
 ---
 import { Menu, X } from 'lucide-react';
+const { pathname } = Astro.url;
+const isHomepage = pathname === '/';
 ---
 
-<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<header id="main-header" class:list={[
+  "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+  { 'scrolled': !isHomepage }
+]}>
   <div class="container mx-auto px-4 flex items-center justify-between h-20">
     <a href="/" id="header-logo" class="text-2xl font-bold">M&T</a>
     <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
@@ -54,7 +59,7 @@ import { Menu, X } from 'lucide-react';
   #main-header.scrolled #desktop-nav a:hover {
     color: #7A5AF8; /* accent-purple */
   }
-  
+
   #main-header #desktop-nav a:hover {
     color: #E0CFFC;
   }
@@ -93,7 +98,9 @@ import { Menu, X } from 'lucide-react';
 
   // Header scroll effect
   const header = document.getElementById('main-header');
-  if (header) {
+  const isHomepage = document.location.pathname === '/';
+
+  if (header && isHomepage) {
     const heroSectionHeight = window.innerHeight;
     const headerHeight = header.offsetHeight;
 

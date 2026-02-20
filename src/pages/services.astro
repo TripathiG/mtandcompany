@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { Building, Rocket, ClipboardCheck, BookUser, Search } from 'lucide-react';
+---
+
+<Layout title="Our Services">
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ServiceCard
+          title="COMPANY FORMATION SERVICES"
+          description="We help not only in regulatory compliance's of a company but also provide clear road-map of various legal and statutory steps that boosts the company growth; it includes many other services besides highlighted below:"
+          icon={Building}
+          details={[
+            'Annual Fillings',
+            'Annual/Special Meetings',
+            'Creation of charges',
+            'ROC complete compliance',
+          ]}
+        />
+        <ServiceCard
+          title="STARTS-UP ADVISORY SERVICES"
+          description="Creating new business line is itself one of the highly technical tasks now a day’s thus to assist you on this we have a special team of members who are specialized on these Starts-up services includes:"
+          icon={Rocket}
+          details={[
+            'Projections & Analysis of financial data.',
+            'Business Analysis.',
+            'Market reports, map of organization structure, etc.',
+          ]}
+        />
+        <ServiceCard
+          title="AUDITING SERVICES"
+          description="Auditing is a widespread area where number of audits exists and each audit is based on organization requirements like:"
+          icon={ClipboardCheck}
+          details={[
+            'Operational audit',
+            'Management audit',
+            'Statutory audit',
+            'Internal audit',
+            'Forensic audit',
+            'Special audit',
+          ]}
+        />
+        <ServiceCard
+          title="ACCOUNTING SERVICES"
+          description="We offer a wide range of accounting services and by choosing us, you not only get your piece of mind but a professionally delivered solutions.​ Below are some of the offerings:"
+          icon={BookUser}
+          details={[
+            'Marinating complete track record.',
+            'Employee & its statutory compliance (EPF, ESI).',
+            'Monthly reports.',
+            'Output report.',
+          ]}
+        />
+        <ServiceCard
+          title="FINANCIAL DUE DILIGENCE"
+          description="Financial due diligence is a crucial part of the merger and acquisition process which enables both parties to make informed decisions relating to the purchase. The financial due diligence report is a comprehensive document outlining the findings from the third party financial services firm. The contents vary between industry; however, these are the contents universally found in a report:"
+          icon={Search}
+          details={[
+            'Internal Control',
+            'Sustainability',
+            'Financial Documents',
+            'Tax Affairs',
+            'Financial Forecasting',
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
