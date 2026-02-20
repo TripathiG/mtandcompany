@@ -1,37 +1,35 @@
 ---
-import ServiceCard from './ServiceCard.astro';
-import { Building, Rocket, ClipboardCheck, BookUser, Search } from 'lucide-react';
+import FlippableServiceCard from './FlippableServiceCard.astro';
+import { Building, Rocket, Users } from 'lucide-react';
 ---
 
 <section id="services" class="py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
+    <h2 class="text-4xl font-bold text-center mb-8">Our Services</h2>
+    <p class="text-lg text-center text-primary-purple/80 mb-12 max-w-4xl mx-auto">
+      We exist to solve the critical issues faced by our clients, both large and small. Our unique approach is not only what differentiates us, but also what makes us successful. We provide a broad range of services and solutions to help organizations facilitate change, achieve their vision and optimize performance and productivity.
+    </p>
     <div class="flex flex-wrap justify-center gap-8">
-      <ServiceCard
-        title="Company Formation"
+      <FlippableServiceCard
+        title="COMPANY FORMATION SERVICES"
+        description="We help not only in regulatory compliances of a company but also provide clear road-map of various legal and statutory steps that boosts the company growth."
         icon={Building}
-        href="/services"
       />
-      <ServiceCard
-        title="Start-up Advisory"
+      <FlippableServiceCard
+        title="STARTS-UP ADVISORY SERVICES"
+        description="Looking to develop your business but not sure where to turn? Need help planning or executing your next project? Let us guide you. Any organization can move forward with small incremental changes, but building for the future in today’s rapidly evolving environment means taking bold chances and making insightful decisions."
         icon={Rocket}
-        href="/services"
       />
-      <ServiceCard
-        title="Auditing"
-        icon={ClipboardCheck}
-        href="/services"
+      <FlippableServiceCard
+        title="ACCOUNTS & HR OUTSOURCING"
+        description="We examine what organizations are doing to stay relevant and competitive in this fast-paced world, and which ones are doing it best. We then strategize using smart tools and global resources in order to understand the implications of every choice our clients can make. Get in touch to learn more about how this service can help you."
+        icon={Users}
       />
-      <ServiceCard
-        title="Accounting"
-        icon={BookUser}
-        href="/services"
-      />
-      <ServiceCard
-        title="Financial Due Diligence"
-        icon={Search}
-        href="/services"
-      />
+    </div>
+    <div class="text-center mt-12">
+      <a href="/services" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors">
+        Learn More
+      </a>
     </div>
   </div>
 </section>

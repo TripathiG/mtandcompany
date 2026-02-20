@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'warm-white': '#FDFBF7',
-        'primary-purple': '#5A3E8A',
-        'accent-purple': '#8C66FF',
+        'warm-white': 'var(--warm-white)',
+        'primary-purple': 'var(--primary-purple)',
+        'accent-green': 'var(--accent-green)',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
