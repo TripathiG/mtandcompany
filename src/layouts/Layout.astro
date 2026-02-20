@@ -1,11 +1,10 @@
-
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
-			title: string;
+	title: string;
 }
 
 const { title } = Astro.props;
@@ -23,7 +22,20 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-warm-white text-primary-purple font-sans">
     <Header />
-		<slot />
+		<main>
+      <slot />
+    </main>
     <Footer />
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+    </style>
 	</body>
 </html>

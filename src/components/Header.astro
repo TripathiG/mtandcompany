@@ -1,4 +1,3 @@
-
 ---
 import { Menu, X } from 'lucide-react';
 const { pathname } = Astro.url;
@@ -13,9 +12,9 @@ const isHomepage = pathname === '/';
     <a href="/" id="header-logo" class="text-2xl font-bold">M&T</a>
     <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
       <a href="/#services" class="transition-colors">Services</a>
-      <a href="/#portfolio" class="transition-colors">Portfolio</a>
+      <a href="/about" class="transition-colors">About Us</a>
       <a href="/team" class="transition-colors">Team</a>
-      <a href="/#contact" class="transition-colors">Contact</a>
+      <a href="/#contact" class="transition-colors">Contact Us</a>
     </nav>
     <button class="md:hidden" id="menu-button">
       <Menu id="menu-icon" />
@@ -29,10 +28,10 @@ const isHomepage = pathname === '/';
       <X className="text-primary-purple" />
     </button>
     <nav class="flex flex-col items-center space-y-8">
-      <a href="/#services" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Services</a>
-      <a href="/#portfolio" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Portfolio</a>
-      <a href="/team" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Team</a>
-      <a href="/#contact" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Contact</a>
+      <a href="/#services" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Services</a>
+      <a href="/about" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">About Us</a>
+      <a href="/team" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Team</a>
+      <a href="/#contact" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Contact Us</a>
     </nav>
   </div>
 </div>
@@ -53,11 +52,11 @@ const isHomepage = pathname === '/';
 
   #main-header.scrolled #header-logo,
   #main-header.scrolled #desktop-nav a {
-    color: #3B3B58; /* primary-purple */
+    color: var(--primary-purple);
   }
 
   #main-header.scrolled #desktop-nav a:hover {
-    color: #7A5AF8; /* accent-purple */
+    color: var(--accent-green);
   }
 
   #main-header #desktop-nav a:hover {
@@ -69,7 +68,7 @@ const isHomepage = pathname === '/';
   }
 
   #main-header.scrolled #menu-icon {
-    color: #3B3B58; /* primary-purple */
+    color: var(--primary-purple);
   }
 </style>
 

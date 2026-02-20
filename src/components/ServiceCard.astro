@@ -23,11 +23,11 @@ const { title, description, icon: Icon, details, href } = Astro.props;
   {href && (
     <>
       <div class="flex-grow flex flex-col items-center justify-center">
-        <Icon class="w-10 h-10 text-accent-purple mb-4" />
+        <Icon class="w-10 h-10 text-accent-green mb-4" />
         <h3 class="text-xl font-bold">{title}</h3>
       </div>
       <div class="mt-2">
-        <a {href} class="text-accent-purple font-semibold hover:underline">
+        <a {href} class="text-accent-green font-semibold hover:underline">
           Learn more &rarr;
         </a>
       </div>
@@ -38,7 +38,7 @@ const { title, description, icon: Icon, details, href } = Astro.props;
   {!href && (
     <>
       <div class="flex items-center mb-4">
-        <Icon class="w-10 h-10 text-accent-purple mr-4 flex-shrink-0" />
+        <Icon class="w-10 h-10 text-accent-green mr-4 flex-shrink-0" />
         <h3 class="text-xl font-bold">{title}</h3>
       </div>
       {description && <p class="mb-4 flex-grow text-sm">{description}</p>}
