@@ -1,18 +1,23 @@
 ---
 import { Menu, X } from 'lucide-react';
+const { pathname } = Astro.url;
+const isHomepage = pathname === '/';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-warm-white/80 backdrop-blur-sm">
+<header id="main-header" class:list={[
+  "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+  { 'scrolled': !isHomepage }
+]}>
   <div class="container mx-auto px-4 flex items-center justify-between h-20">
-    <a href="/" class="text-primary-purple text-2xl font-bold">M&T</a>
-    <nav class="hidden md:flex items-center space-x-8">
-      <a href="/#services" class="hover:text-accent-purple transition-colors">Services</a>
-      <a href="/#portfolio" class="hover:text-accent-purple transition-colors">Portfolio</a>
-      <a href="/team" class="hover:text-accent-purple transition-colors">Team</a>
-      <a href="/#contact" class="hover:text-accent-purple transition-colors">Contact</a>
+    <a href="/" id="header-logo" class="text-2xl font-bold">M&T</a>
+    <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
+      <a href="/services" class="transition-colors">Services</a>
+      <a href="/about" class="transition-colors">About Us</a>
+      <a href="/team" class="transition-colors">Team</a>
+      <a href="/#contact" class="transition-colors">Contact Us</a>
     </nav>
     <button class="md:hidden" id="menu-button">
-      <Menu className="text-primary-purple" />
+      <Menu id="menu-icon" />
     </button>
   </div>
 </header>
@@ -23,30 +28,87 @@ import { Menu, X } from 'lucide-react';
       <X className="text-primary-purple" />
     </button>
     <nav class="flex flex-col items-center space-y-8">
-      <a href="/#services" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Services</a>
-      <a href="/#portfolio" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Portfolio</a>
-      <a href="/team" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Team</a>
-      <a href="/#contact" class="text-2xl text-primary-purple hover:text-accent-purple transition-colors">Contact</a>
+      <a href="/services" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Services</a>
+      <a href="/about" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">About Us</a>
+      <a href="/team" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Team</a>
+      <a href="/#contact" class="text-2xl text-primary-purple hover:text-accent-green transition-colors">Contact Us</a>
     </nav>
   </div>
 </div>
 
+<style>
+  #main-header {
+    color: white;
+  }
+
+  #main-header a {
+    color: white;
+  }
+
+  #main-header.scrolled {
+    background-color: rgba(255, 250, 240, 0.8); /* warm-white/80 */
+    backdrop-filter: blur(4px);
+  }
+
+  #main-header.scrolled #header-logo,
+  #main-header.scrolled #desktop-nav a {
+    color: var(--primary-purple);
+  }
+
+  #main-header.scrolled #desktop-nav a:hover {
+    color: var(--accent-green);
+  }
+
+  #main-header #desktop-nav a:hover {
+    color: #E0CFFC;
+  }
+
+  #menu-icon {
+    color: white;
+  }
+
+  #main-header.scrolled #menu-icon {
+    color: var(--primary-purple);
+  }
+</style>
+
 <script>
+  // Mobile menu toggle
   const menuButton = document.getElementById('menu-button');
   const closeButton = document.getElementById('close-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  menuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-  });
+  if (menuButton && closeButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
 
-  closeButton.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-  });
-
-  mobileMenu.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) {
+    closeButton.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
-    }
-  });
+    });
+
+    // Close menu if clicking outside of it
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  // Header scroll effect
+  const header = document.getElementById('main-header');
+  const isHomepage = document.location.pathname === '/';
+
+  if (header && isHomepage) {
+    const heroSectionHeight = window.innerHeight;
+    const headerHeight = header.offsetHeight;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > heroSectionHeight - headerHeight) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
 </script>

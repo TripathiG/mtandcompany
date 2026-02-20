@@ -1,0 +1,42 @@
+---
+const industries = [
+  "Industry 1", "Industry 2", "Industry 3", "Industry 4", "Industry 5", "Industry 6", "Industry 7", "Industry 8", "Industry 9"
+];
+// Duplicate for a seamless scroll effect
+const allIndustries = [...industries, ...industries];
+---
+
+<section id="who-we-serve" class="py-20 bg-gray-100 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12">Who We Serve</h2>
+  </div>
+  
+  <div 
+    class="relative w-full group"
+    style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+  >
+    <div class="flex animate-marquee group-hover:[animation-play-state:paused]">
+      {allIndustries.map((industry) => (
+        <div class="flex-shrink-0 mx-4 w-64 text-center">
+          <div class="w-full h-40 bg-gray-300 rounded-lg mb-4 flex items-center justify-center shadow-md">
+             <img src="https://placehold.co/300x200/a855f7/ffffff?text=Image" alt={industry} class="rounded-lg object-cover w-full h-full" />
+          </div>
+          <p class="font-bold text-lg mt-2">{industry}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    display: flex;
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+</style>

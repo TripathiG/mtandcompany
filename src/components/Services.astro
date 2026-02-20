@@ -1,69 +1,35 @@
 ---
-import ServiceCard from './ServiceCard.astro';
-import { Building, Rocket, ClipboardCheck, BookUser, Search } from 'lucide-react';
+import FlippableServiceCard from './FlippableServiceCard.astro';
+import { Building, Rocket, Users } from 'lucide-react';
 ---
 
 <section id="services" class="py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <ServiceCard
+    <h2 class="text-4xl font-bold text-center mb-8">Our Services</h2>
+    <p class="text-lg text-center text-primary-purple/80 mb-12 max-w-4xl mx-auto">
+      We exist to solve the critical issues faced by our clients, both large and small. Our unique approach is not only what differentiates us, but also what makes us successful. We provide a broad range of services and solutions to help organizations facilitate change, achieve their vision and optimize performance and productivity.
+    </p>
+    <div class="flex flex-wrap justify-center gap-8">
+      <FlippableServiceCard
         title="COMPANY FORMATION SERVICES"
-        description="We help not only in regulatory compliance's of a company but also provide clear road-map of various legal and statutory steps that boosts the company growth; it includes many other services besides highlighted below:"
+        description="We help not only in regulatory compliances of a company but also provide clear road-map of various legal and statutory steps that boosts the company growth."
         icon={Building}
-        details={[
-          'Annual Fillings',
-          'Annual/Special Meetings',
-          'Creation of charges',
-          'ROC complete compliance',
-        ]}
       />
-      <ServiceCard
+      <FlippableServiceCard
         title="STARTS-UP ADVISORY SERVICES"
-        description="Creating new business line is itself one of the highly technical tasks now a day’s thus to assist you on this we have a special team of members who are specialized on these Starts-up services includes:"
+        description="Looking to develop your business but not sure where to turn? Need help planning or executing your next project? Let us guide you. Any organization can move forward with small incremental changes, but building for the future in today’s rapidly evolving environment means taking bold chances and making insightful decisions."
         icon={Rocket}
-        details={[
-          'Projections & Analysis of financial data.',
-          'Business Analysis.',
-          'Market reports, map of organization structure, etc.',
-        ]}
       />
-      <ServiceCard
-        title="AUDITING SERVICES"
-        description="Auditing is a widespread area where number of audits exists and each audit is based on organization requirements like:"
-        icon={ClipboardCheck}
-        details={[
-          'Operational audit',
-          'Management audit',
-          'Statutory audit',
-          'Internal audit',
-          'Forensic audit',
-          'Special audit',
-        ]}
+      <FlippableServiceCard
+        title="ACCOUNTS & HR OUTSOURCING"
+        description="We examine what organizations are doing to stay relevant and competitive in this fast-paced world, and which ones are doing it best. We then strategize using smart tools and global resources in order to understand the implications of every choice our clients can make. Get in touch to learn more about how this service can help you."
+        icon={Users}
       />
-      <ServiceCard
-        title="ACCOUNTING SERVICES"
-        description="We offer a wide range of accounting services and by choosing us, you not only get your piece of mind but a professionally delivered solutions.​ Below are some of the offerings:"
-        icon={BookUser}
-        details={[
-          'Marinating complete track record.',
-          'Employee & its statutory compliance (EPF, ESI).',
-          'Monthly reports.',
-          'Output report.',
-        ]}
-      />
-      <ServiceCard
-        title="FINANCIAL DUE DILIGENCE"
-        description="Financial due diligence is a crucial part of the merger and acquisition process which enables both parties to make informed decisions relating to the purchase. The financial due diligence report is a comprehensive document outlining the findings from the third party financial services firm. The contents vary between industry; however, these are the contents universally found in a report:"
-        icon={Search}
-        details={[
-          'Internal Control',
-          'Sustainability',
-          'Financial Documents',
-          'Tax Affairs',
-          'Financial Forecasting',
-        ]}
-      />
+    </div>
+    <div class="text-center mt-12">
+      <a href="/services" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors">
+        Learn More
+      </a>
     </div>
   </div>
 </section>
