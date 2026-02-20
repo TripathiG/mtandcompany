@@ -1,29 +1,23 @@
 ---
-import type { Component } from 'astro';
-
 interface Props {
   title: string;
   description: string;
-  icon: Component;
+  icon: any;
 }
 
 const { title, description, icon: Icon } = Astro.props;
 ---
 
-<div class="flip-card w-64 h-64 perspective-1000">
-  <div class="flip-card-inner relative w-full h-full text-center transition-transform duration-700 transform-style-preserve-3d">
-    <div class="flip-card-front absolute w-full h-full backface-hidden bg-warm-white text-primary-purple p-6 rounded-lg shadow-lg border border-primary-purple/10 flex flex-col items-center justify-center">
+<div class="group w-64 h-64 perspective-1000">
+  <div class="relative w-full h-full text-center transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+    {/* Front of the card */}
+    <div class="absolute w-full h-full backface-hidden bg-warm-white text-primary-purple p-6 rounded-lg shadow-lg border border-primary-purple/10 flex flex-col items-center justify-center">
       <Icon class="w-12 h-12 text-accent-green mb-4" />
       <h3 class="text-xl font-bold">{title}</h3>
     </div>
-    <div class="flip-card-back absolute w-full h-full backface-hidden bg-primary-purple text-warm-white p-6 rounded-lg shadow-lg transform rotate-y-180 flex flex-col items-center justify-center">
+    {/* Back of the card */}
+    <div class="absolute w-full h-full backface-hidden bg-primary-purple text-white p-6 rounded-lg shadow-lg rotate-y-180 flex flex-col items-center justify-center">
       <p class="text-sm">{description}</p>
     </div>
   </div>
 </div>
-
-<style>
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-</style>
