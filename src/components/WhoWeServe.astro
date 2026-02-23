@@ -1,5 +1,6 @@
 ---
-// Simplified, character-safe titles for each card
+// By using `as const`, we create a readonly tuple of specific string literals,
+// which allows for stronger type-checking.
 const industries = [
   "Trading", 
   "Manufacturing", 
@@ -10,10 +11,11 @@ const industries = [
   "NRIs",
   "HNIs",
   "NGOs & Societies"
-];
+] as const;
 
-// A mapping of the titles to the new, local image files
-const industryImages = {
+// We use `Record` to create a type where the keys must be one of the strings
+// from the `industries` array, ensuring type safety.
+const industryImages: Record<typeof industries[number], string> = {
   "Trading": "/images/who-we-serve/trading.jpg",
   "Manufacturing": "/images/who-we-serve/manufacturing.jpg",
   "Energy Sector": "/images/who-we-serve/energy-sector.jpg",
@@ -25,7 +27,6 @@ const industryImages = {
   "NGOs & Societies": "/images/who-we-serve/ngos-and-societies.jpg"
 };
 
-// Duplicate for a seamless scroll effect
 const allIndustries = [...industries, ...industries];
 ---
 
@@ -57,12 +58,6 @@ const allIndustries = [...industries, ...industries];
 </section>
 
 <style>
-  /* 
-    The card width is w-64 (16rem) and the margin is mx-4 (1rem on each side).
-    Total width for one card is 18rem.
-    There are 9 unique cards.
-    The total distance for the marquee to travel is 9 * 18rem = 162rem.
-  */
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-162rem); }
@@ -70,7 +65,6 @@ const allIndustries = [...industries, ...industries];
 
   .animate-marquee {
     display: flex;
-    /* We speed up the animation to 30s from 40s */
     animation: marquee 30s linear infinite;
     will-change: transform;
   }
