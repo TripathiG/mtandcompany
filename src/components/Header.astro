@@ -9,7 +9,14 @@ const isHomepage = pathname === '/';
   { 'scrolled': !isHomepage }
 ]}>
   <div class="container mx-auto px-4 flex items-center justify-between h-20">
-    <a href="/" id="header-logo" class="text-2xl font-bold">M&T</a>
+    <a href="/" id="header-logo">
+      <img 
+        src="/images/logo-white.svg" 
+        alt="M&T Company Logo" 
+        id="header-logo-img"
+        class="h-12 w-auto"
+      />
+    </a>
     <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
       <a href="/services" class="transition-colors">Services</a>
       <a href="/about" class="transition-colors">About Us</a>
@@ -46,17 +53,19 @@ const isHomepage = pathname === '/';
   }
 
   #main-header.scrolled {
-    background-color: rgba(255, 250, 240, 0.8); /* warm-white/80 */
-    backdrop-filter: blur(4px);
+    /* New: Dark purple background for the scrolled header */
+    background-color: rgba(46, 26, 74, 0.9); /* primary-purple at 90% opacity */
+    backdrop-filter: blur(8px);
   }
-
-  #main-header.scrolled #header-logo,
+  
   #main-header.scrolled #desktop-nav a {
-    color: var(--primary-purple);
+    /* Ensure nav links remain white */
+    color: white;
   }
 
   #main-header.scrolled #desktop-nav a:hover {
-    color: var(--accent-green);
+    /* A lighter purple/pink for hover on the dark background */
+    color: #E0CFFC;
   }
 
   #main-header #desktop-nav a:hover {
@@ -68,7 +77,8 @@ const isHomepage = pathname === '/';
   }
 
   #main-header.scrolled #menu-icon {
-    color: var(--primary-purple);
+     /* Ensure menu icon remains white */
+    color: white;
   }
 </style>
 
