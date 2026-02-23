@@ -1,14 +1,37 @@
 ---
+// Simplified, character-safe titles for each card
 const industries = [
-  "TRADING", "MANUFACTURING", "ENERGY SECTOR", "REAL ESTATE", "E-COMMERCE", "PHARMACEUTICALS", "NRI'S", "HNI'S", "NGO’S/SOCIETIES"
+  "Trading", 
+  "Manufacturing", 
+  "Energy Sector", 
+  "Real Estate", 
+  "E-Commerce", 
+  "Pharmaceuticals", 
+  "NRIs",
+  "HNIs",
+  "NGOs & Societies"
 ];
+
+// A mapping of the titles to the new, local image files
+const industryImages = {
+  "Trading": "/images/who-we-serve/trading.jpg",
+  "Manufacturing": "/images/who-we-serve/manufacturing.jpg",
+  "Energy Sector": "/images/who-we-serve/energy-sector.jpg",
+  "Real Estate": "/images/who-we-serve/real-estate.jpg",
+  "E-Commerce": "/images/who-we-serve/e-commerce.jpg",
+  "Pharmaceuticals": "/images/who-we-serve/pharmaceuticals.jpg",
+  "NRIs": "/images/who-we-serve/nris.jpg",
+  "HNIs": "/images/who-we-serve/hnis.jpg",
+  "NGOs & Societies": "/images/who-we-serve/ngos-and-societies.jpg"
+};
+
 // Duplicate for a seamless scroll effect
 const allIndustries = [...industries, ...industries];
 ---
 
-<section id="who-we-serve" class="py-20 bg-gray-100 overflow-hidden">
+<section id="who-we-serve" class="py-20 bg-warm-white/40 overflow-hidden">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-12">Who We Serve</h2>
+    <h2 class="text-4xl font-bold text-center mb-12 text-primary-purple">Who We Serve</h2>
   </div>
   
   <div 
@@ -19,9 +42,14 @@ const allIndustries = [...industries, ...industries];
       {allIndustries.map((industry) => (
         <div class="flex-shrink-0 mx-4 w-64 text-center">
           <div class="w-full h-40 bg-gray-300 rounded-lg mb-4 flex items-center justify-center shadow-md">
-             <img src="https://placehold.co/300x200/a855f7/ffffff?text=Image" alt={industry} class="rounded-lg object-cover w-full h-full" />
+             <img 
+               src={industryImages[industry]} 
+               alt={industry} 
+               class="rounded-lg object-cover w-full h-full"
+               loading="lazy"
+             />
           </div>
-          <p class="font-bold text-lg mt-2">{industry}</p>
+          <p class="font-bold text-lg mt-2 text-primary-purple/80">{industry}</p>
         </div>
       ))}
     </div>
@@ -29,14 +57,21 @@ const allIndustries = [...industries, ...industries];
 </section>
 
 <style>
+  /* 
+    The card width is w-64 (16rem) and the margin is mx-4 (1rem on each side).
+    Total width for one card is 18rem.
+    There are 9 unique cards.
+    The total distance for the marquee to travel is 9 * 18rem = 162rem.
+  */
   @keyframes marquee {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to { transform: translateX(-162rem); }
   }
 
   .animate-marquee {
     display: flex;
-    animation: marquee 40s linear infinite;
+    /* We speed up the animation to 30s from 40s */
+    animation: marquee 30s linear infinite;
     will-change: transform;
   }
 </style>
