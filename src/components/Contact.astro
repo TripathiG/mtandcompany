@@ -1,6 +1,6 @@
 ---
 import { Send } from 'lucide-react';
----
+--- 
 
 <section id="contact" class="py-20">
   <div class="container mx-auto px-4">
@@ -8,17 +8,24 @@ import { Send } from 'lucide-react';
     <div class="grid md:grid-cols-2 gap-24 items-start">
       
       <!-- Contact Form -->
-      <form>
+      <form id="contact-form">
         <div class="grid md:grid-cols-2 gap-4 mb-4">
-          <input type="text" placeholder="Your Name" class="bg-white p-4 rounded-lg w-full shadow-lg">
-          <input type="email" placeholder="Your Email" class="bg-white p-4 rounded-lg w-full shadow-lg">
+          <input type="text" name="name" placeholder="Your Name" class="bg-white p-4 rounded-lg w-full shadow-lg" required minlength="2">
+          <input type="email" name="email" placeholder="Your Email" class="bg-white p-4 rounded-lg w-full shadow-lg" required>
         </div>
-        <textarea placeholder="Your Message" class="bg-white p-4 rounded-lg w-full mb-4 shadow-lg" rows="6"></textarea>
+        <textarea name="message" placeholder="Your Message" class="bg-white p-4 rounded-lg w-full mb-4 shadow-lg" rows="6" required minlength="10"></textarea>
+        
+        <!-- Honeypot Field for Spam Protection -->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="flex justify-center">
-          <button type="submit" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors flex items-center">
+          <button type="submit" id="submit-button" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors flex items-center">
             Send Message <Send className="ml-2" />
           </button>
         </div>
+        <p id="status-message" class="text-center mt-4"></p>
       </form>
 
       <!-- Address and Social Media -->
@@ -31,24 +38,76 @@ import { Send } from 'lucide-react';
           <p><strong>Mob:</strong> +91-96500-67855</p>
           <p><strong>Email:</strong> mtdelhi15@gmail.com</p>
         </div>
-
-        <div class="mt-8">
-          <h3 class="text-2xl font-bold mb-4">Follow Us</h3>
-          <div class="flex justify-center space-x-4">
-            <a href="#" class="text-primary-purple hover:text-accent-green" aria-label="Facebook">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </a>
-            <a href="#" class="text-primary-purple hover:text-accent-green" aria-label="LinkedIn">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.98v16h4.98v-8.396c0-2.006 1.806-2.006 1.806 0v8.396h4.98v-10.396c0-5.46-4.47-5.46-4.47 0v2z" />
-              </svg>
-            </a>
-          </div>
-        </div>
       </div>
-
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitButton = document.getElementById('submit-button');
+  const statusMessage = document.getElementById('status-message');
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUQzLeQ6iqZGG6ST2bdJfaCtIO4MukagYFmBlqQJUXKrsCFoVcmiQ06ImwA8ESwAwKGw/exec'; // Still needs your URL
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (submitButton) submitButton.setAttribute('disabled', 'true');
+    if (statusMessage) {
+      statusMessage.textContent = 'Sending...';
+      statusMessage.style.color = '#5B21B6'; // primary-purple
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // --- Client-side validation --- 
+    if (data.honeypot) { // Bot check
+      console.log('Honeypot field filled. Submission rejected.');
+      return; // Silently fail
+    }
+    if (data.name.toString().trim().length < 2) {
+        if (statusMessage) statusMessage.textContent = 'Please enter a valid name.';
+        if (submitButton) submitButton.removeAttribute('disabled');
+        return;
+    }
+    if (data.message.toString().trim().length < 10) {
+        if (statusMessage) statusMessage.textContent = 'Your message is too short.';
+        if (submitButton) submitButton.removeAttribute('disabled');
+        return;
+    }
+    // --- End validation ---
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data),
+        mode: 'cors',
+      });
+
+      const result = await response.json();
+
+      if (result.result === 'success') {
+        if (statusMessage) {
+          statusMessage.textContent = 'Thank you! Your message has been sent.';
+          statusMessage.style.color = '#16A34A'; // accent-green
+        }
+        form.reset();
+      } else {
+        throw new Error(result.error || 'An unknown error occurred.');
+      }
+
+    } catch (error) {
+      if (statusMessage) {
+        statusMessage.textContent = 'An error occurred. Please try again later.';
+        statusMessage.style.color = '#DC2626'; // Red
+        console.error('Form Submission Error:', error);
+      }
+    } finally {
+      if (submitButton) submitButton.removeAttribute('disabled');
+    }
+  });
+</script>
