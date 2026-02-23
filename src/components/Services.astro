@@ -1,13 +1,25 @@
 ---
+import { Building, Handshake, Bot, ArrowRight } from 'lucide-react';
 import FlippableServiceCard from './FlippableServiceCard.astro';
-import { Building, Rocket, Users } from 'lucide-react';
----
+--- 
 
-<section id="services" class="py-20">
-  <div class="container mx-auto px-4">
+<section id="services" class="relative py-20 text-white">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0">
+    <img 
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2940&auto=format&fit=crop" 
+      alt="Team collaborating on a project" 
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/75 backdrop-blur-md"></div>
+    <div class="absolute inset-0 bg-primary-purple/40 mix-blend-overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 relative z-10">
     <h2 class="text-4xl font-bold text-center mb-8">Our Services</h2>
-    <p class="text-lg text-center text-primary-purple/80 mb-12 max-w-4xl mx-auto">
-      We exist to solve the critical issues faced by our clients, both large and small. Our unique approach is not only what differentiates us, but also what makes us successful. We provide a broad range of services and solutions to help organizations facilitate change, achieve their vision and optimize performance and productivity.
+    <p class="text-lg text-center text-gray-200 mb-12 max-w-4xl mx-auto">
+     We exist to solve the critical issues faced by our clients, both large and small. Our unique approach is not only what differentiates us, but also what makes us successful. We provide a broad range of services and solutions to help organizations facilitate change, achieve their vision and optimize performance and productivity.
     </p>
     <div class="flex flex-wrap justify-center gap-8">
       <FlippableServiceCard
@@ -17,17 +29,17 @@ import { Building, Rocket, Users } from 'lucide-react';
       />
       <FlippableServiceCard
         title="STARTS-UP ADVISORY SERVICES"
-        description="Looking to develop your business but not sure where to turn? Need help planning or executing your next project? Let us guide you. Any organization can move forward with small incremental changes, but building for the future in today’s rapidly evolving environment means taking bold chances and making insightful decisions."
-        icon={Rocket}
+        description="We help and advise start-ups in their initial journey of business with respect to legal setup, financial modelling, and other regulatory framework of the government."
+        icon={Handshake}
       />
       <FlippableServiceCard
-        title="ACCOUNTS & HR OUTSOURCING"
-        description="We examine what organizations are doing to stay relevant and competitive in this fast-paced world, and which ones are doing it best. We then strategize using smart tools and global resources in order to understand the implications of every choice our clients can make. Get in touch to learn more about how this service can help you."
-        icon={Users}
+        title="REGULATORY COMPLIANCE SERVICES"
+        description="We assist various corporates in their day to day and event based regulatory compliances under various corporate laws. We also assist in obtaining various government licenses."
+        icon={Bot}
       />
     </div>
     <div class="text-center mt-12">
-      <a href="/services" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors">
+      <a href="/services" class="bg-accent-green text-white font-bold py-3 px-8 rounded-full hover:bg-accent-green/80 transition-colors inline-flex items-center">
         Learn More
       </a>
     </div>
