@@ -1,21 +1,80 @@
----
+--- 
 import Layout from '../layouts/Layout.astro';
 import TeamMember from '../components/TeamMember.astro';
----
+--- 
 
-<Layout title="Meet Our Team">
+<Layout title="Our Team">
   <section class="py-32">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12">Meet Our Team</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <TeamMember name="John Doe" role="CEO" bio="John is the visionary leader of our company, with a passion for innovation and a drive to create amazing things." />
-        <TeamMember name="Jane Smith" role="Lead Designer" bio="Jane is the creative force behind our designs, with a keen eye for detail and a love for beautiful aesthetics." />
-        <TeamMember name="Peter Jones" role="Lead Developer" bio="Peter is the technical wizard who brings our ideas to life, with a deep understanding of code and a commitment to quality." />
-        <TeamMember name="Mary Williams" role="Project Manager" bio="Mary keeps our projects on track, ensuring that we deliver on time and on budget, every time." />
-        <TeamMember name="David Brown" role="Marketing Specialist" bio="David is our marketing guru, with a knack for storytelling and a passion for connecting with our audience." />
-        <TeamMember name="Susan Garcia" role="Content Strategist" bio="Susan creates compelling content that engages and informs, helping us to build a strong online presence." />
-        <TeamMember name="Michael Miller" role="SEO Expert" bio="Michael helps us to get noticed by search engines, driving traffic and leads to our website." />
-        <TeamMember name="Sarah Wilson" role="Social Media Manager" bio="Sarah is the voice of our brand on social media, building relationships and fostering a sense of community." />
+      <h2 class="text-4xl font-bold text-center mb-8">Our Team</h2>
+      <p class="text-lg text-center text-gray-600 mb-12 max-w-4xl mx-auto">
+        We are a team of dedicated professionals with a passion for excellence. Our diverse backgrounds and expertise allow us to deliver innovative solutions and outstanding results for our clients. We are committed to collaboration, integrity, and continuous improvement.
+      </p>
+
+      <div class="flex flex-col items-center gap-8">
+        <!-- Row 1: 2 members -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+            <TeamMember 
+              name="Lalit Mishra" 
+              role="B.COM (H), LLB" 
+              bio="Mr. Mishra is having practicing experience of more than two decades. His area of expertise includes Corporate Laws, Labor Laws, Taxations, etc.
+              Currently he is on the panel of many Public Sector Banks & prominent public and private companies and working successfully for them.
+              He also has experience to handle/represent assessment cases.  His result oriented approach ensures that the clients benefit in terms of having the most efficient solution.
+              He is also well versed with economic and financial sector of India and World.
+              " 
+            />
+            <TeamMember 
+              name="Aman Kumar" 
+              role="B.COM (H), FCA, ACS" 
+              bio="Mr. Aman is a fellow member of ICAI and also an associate member of the ICSI. His specialization includes Corporate Law and Labour Law. He has specialized knowledge in the matters of DGFT, Auditing & Taxation.
+His ability to understand the business environment coupled with his sound financial, accounting & taxation background has enabled him to specialize in Mergers & Acquisitions and various audits of PSU’s and private sector companies. 
+He has a rich experience in various types of audit which includes Statutory Audit, Tax Audit, Internal Audit, Bank Audits, Co-operative societies, PSU, Government and Autonomous bodies. 
+His working area covers Indirect & Direct Taxes Both. He also appears/pleaded before various authorities & Appellate Authorities in handling scrutiny and refund cases for client.
+              " 
+            />
+        </div>
+
+        <!-- Row 2: 2 members -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+            <TeamMember 
+              name="Subhash Shishodia" 
+              role="Master in Economics, MBA" 
+              bio="Mr. Subhash has completed his Masters in Economics & MBA and comes with experience of approx. 3 decades in the area of banking, financial institutions, International trading, Marketing, Renewable energy and Solar industry. He is Co-founder and Director, International operations of Oberon Group (Oberon IT, Oberon Power LLC., USA). 
+He is one of the pioneers to introduce CNG conversion/retro fitment of old Diesel Vehicles to use CNG as clean fuel first time in India.
+He has established a track record performance to optimize personnel skills in innovations and always in new and proven technology to overcome market challenges and to achieve his goals in the business in different sectors.
+              " 
+            />
+            <TeamMember 
+              name="Chinky Tripathi" 
+              role="B.COM (H), LLB, FCA, ISA" 
+              bio="Mrs. Tripathi is a qualified Fellow Chartered Accountant and served the profession for more than 12 years and has versatile experience in advisory, planning, compliance, audit services and assignments related to raising finance, re-structuring, valuation etc.
+She has carried out several assignments for Due Diligence and Amalgamation of companies. He has acumen for process and controls and specializes in Internal Audit.
+              " 
+            />
+        </div>
+
+        <!-- Row 3: 3 members -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-6xl">
+            <TeamMember 
+              name="Meenu Sharma" 
+              role="B.A, LLB" 
+              bio="Mrs. Sharma is a Practicing Advocate at Delhi High Court and various District Courts, DRT, Consumer Forum, Commission and various other Tribunal in Delhi and has been in this profession from last 12 Years. She is looking after the matters of civil, criminal, Writs, Appeals, Banking, Insurance as well as consumer matters before the Hon’ble respective courts diligently.
+She takes a multi-disciplinary approach in practice of law and have been able to recognize the legal issues with the expertise. She also adds value at each stage – from planning to implementation and review.
+              " 
+            />
+            <TeamMember 
+              name="Ram Niwas Nirmania" 
+              role="B.COM, LLB" 
+              bio="Mr. Ram has done his Bachelor in Law in 2014 from Delhi University. He is specialized in Suits, Recovery Suits, Civil Matters, Specific Relief laws, Family Law, Tenancy Law, Criminal Law, Domestic Violence, MACT, NCDRC.
+He is also rendering his advisory services to Nationalized Bank’s & Co-operative Societies.
+              " 
+            />
+            <TeamMember 
+              name="Umesh" 
+              role="SEO Expert" 
+              bio="Umesh helps us to get noticed by search engines, driving traffic and leads to our website." 
+            />
+        </div>
       </div>
     </div>
   </section>
