@@ -105,6 +105,14 @@ const isHomepage = pathname === '/';
         mobileMenu.classList.add('hidden');
       }
     });
+
+    // *** NEW LOGIC: Close menu when a navigation link is clicked ***
+    const navLinks = mobileMenu.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
   }
 
   // Header scroll effect
